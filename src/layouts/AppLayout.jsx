@@ -7,7 +7,9 @@ function AppLayout() {
       <main className="min-h-screen container ">
         <Header />
         {/* Body */}
-        <Outlet />
+        <div className="mx-4">
+          <Outlet />
+        </div>
       </main>
       {/* footer */}
       <div className="p-10 text-center bg-gray-800 mt-10 ">
