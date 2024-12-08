@@ -14,6 +14,22 @@ export async function getUrls(user_id) {
   return data;
 }
 
+export async function getUrl({ id, user_id }) {
+  const { data, error } = await supabase
+    .from("urls")
+    .select("*")
+    .eq("id", id)
+    .eq("user_id", user_id)
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Short Url not found");
+  }
+
+  return data;
+}
+
 export async function createUrl(
   { title, longUrl, customUrl, user_id },
   qrcode
