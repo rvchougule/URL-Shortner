@@ -6,9 +6,12 @@ import { useParams } from "react-router-dom";
 import { BarLoader } from "react-spinners";
 
 const RedirectLink = () => {
+  console.log("Redirecting...");
   const { id } = useParams();
+  console.log("id", id);
 
   const { loading, data, fn } = useFetch(getLongUrl, id);
+  console.log(data);
 
   const { loading: loadingStats, fn: fnStats } = useFetch(storeClicks, {
     id: data?.id,
