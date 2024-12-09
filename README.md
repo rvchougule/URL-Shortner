@@ -5,7 +5,7 @@ The ultimate URL Shortener for all your needs! Simplify, customize, and manage l
 ## 🚀 Live Demo  
 Check out the live application: [url-shortner-chi-two.vercel.app](https://url-shortner-chi-two.vercel.app/)  
 
-<iframe src="https://url-shortner-chi-two.vercel.app/" width="100%" height="500px" style="border:none;"></iframe>  
+
 
 ---
 
