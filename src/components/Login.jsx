@@ -29,7 +29,15 @@ const Login = () => {
   const longLink = searchParams.get("createNew");
 
   const { data, error, loading, fn: fnLogin } = useFetch(login, formData);
-  const { fetchUser } = useUrlState();
+  const { isAuthenticated, fetchUser } = useUrlState();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate(`/dashboard?${longLink ? longLink : ""}`);
+      fetchUser();
+    }
+  }, [isAuthenticated]);
+
   useEffect(() => {
     if (error === null && data) {
       navigate(`/dashboard?${longLink ? longLink : ""}`);

@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BarLoader } from "react-spinners";
 
+// eslint-disable-next-line react/prop-types
 function RequireAuth({ children }) {
   const navigate = useNavigate();
-
   const { loading, isAuthenticated } = useUrlState();
 
   useEffect(() => {

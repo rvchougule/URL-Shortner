@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
-  const [longUrl, setLongUrl] = useState();
+  const [longUrl, setLongUrl] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {

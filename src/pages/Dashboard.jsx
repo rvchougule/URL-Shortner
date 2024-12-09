@@ -2,7 +2,7 @@ import { BarLoader } from "react-spinners";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Input } from "@/components/ui/input";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Filter } from "lucide-react";
 import { useUrlState } from "@/contexts/UrlContext";
 import useFetch from "@/hooks/useFetch";
@@ -14,6 +14,10 @@ import { CreateLink } from "@/components/CreateLink";
 
 export default function Dashboard() {
   const [searchQuery, setSearchQuery] = useState("");
+
+  // const createLinkRef = useRef(null);
+  // const [searchParams] = useSearchParams();
+  // const longLink = searchParams.get("createNew");
 
   const { user } = useUrlState();
   const {
@@ -33,6 +37,12 @@ export default function Dashboard() {
     urls?.map((url) => url.id)
   );
 
+  // useEffect(() => {
+  //   if (createLinkRef.current) {
+  //     createLinkRef.current?.click();
+  //     console.log("Cliked");
+  //   }
+  // }, [longLink]);
   useEffect(() => {
     fnUrls();
   }, []);
@@ -78,12 +88,13 @@ export default function Dashboard() {
         <Input
           type="text"
           placeholder="Filter Links... "
-          value={searchQuery}
+          value={searchQuery || ""}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         <Filter className="absolute top-2 right-2 p-1" />
       </div>
       {error ? <Error message={error.message} /> : ""}
+      {errorClicks ? <Error message={errorClicks.message} /> : ""}
 
       {(filteredUrls || []).map((url, i) => {
         return <LinkCard key={i} url={url} fetchUrls={fnUrls} />;
